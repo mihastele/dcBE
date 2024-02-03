@@ -26,12 +26,19 @@ public class DWWEntry {
         this.date = date;
     }
 
-    public String getStoreId() {
-        return storeId;
+//    public String getStoreId() {
+//        return storeId;
+//    }
+//
+//    public void setStoreId(String storeId) {
+//        this.storeId = storeId;
+//    }
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(String storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public String getServedBy() {
@@ -120,7 +127,12 @@ public class DWWEntry {
 
     String date;
 
-    String storeId;
+//    String storeId;
+
+    @ManyToOne
+    @JoinColumn(name = "storeName")
+    Store store;
+
     String servedBy;
     String email;
     String btBroadband;
@@ -134,10 +146,11 @@ public class DWWEntry {
     @Column(name = "otherHandyInfo", length = 50)
     String otherHandyInfo;
 
-    public DWWEntry(Long id, String date, String storeId, String servedBy, String email, String btBroadband, String btTvPackage, Date sportPackage, BigDecimal monthlyCharge, BigDecimal upfrontFee, Integer installmentsOfPayment, BigDecimal totalContractCost, String otherHandyInfo) {
+    public DWWEntry(Long id, String date, Store store, String servedBy, String email, String btBroadband, String btTvPackage, Date sportPackage, BigDecimal monthlyCharge, BigDecimal upfrontFee, Integer installmentsOfPayment, BigDecimal totalContractCost, String otherHandyInfo) {
         this.id = id;
         this.date = date;
-        this.storeId = storeId;
+//        this.storeId = storeId;
+        this.store = store;
         this.servedBy = servedBy;
         this.email = email;
         this.btBroadband = btBroadband;
@@ -158,7 +171,7 @@ public class DWWEntry {
         return "DWWEntry{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
-                ", storeId='" + storeId + '\'' +
+//                ", storeId='" + storeId + '\'' +
                 ", servedBy='" + servedBy + '\'' +
                 ", email='" + email + '\'' +
                 ", BtBroadband='" + btBroadband + '\'' +
